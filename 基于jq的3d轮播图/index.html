@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <style>
+
+        /**********roundabout**********/
+        .exhibition_hall {
+            position: relative;
+        }
+        .roundabout_box {
+            height: 426px;
+            width: 980px;
+            margin: 40px auto 20px auto;
+        }
+
+        .roundabout-holder {
+            list-style: none;
+            width: 800px;
+            height: 426px;
+            margin: 0px auto;
+        }
+
+        .roundabout-moveable-item {
+            font-size: 12px !important;
+            height: 426px;
+            width: 300px;
+            cursor: pointer;
+            background: #f9f9f9;
+        }
+
+        .roundabout-moveable-item img {
+            height: 100%;
+            width: 100%;
+            background-color: #fff;
+            margin: 0;
+        }
+
+        .roundabout-in-focus {
+            cursor: auto;
+            border-left: 1px #fff solid;
+            border-right: 1px #fff solid;
+        }
+
+        .roundabout-in-focus000:hover {
+            -webkit-box-shadow: 0px 0px 20px #787878;
+            -moz-box-shadow: 0px 0px 20px #787878;
+            background: #f9f9f9;
+        }
+
+        .roundabout-holder .text {
+            color: #999;
+        }
+
+        .roundabout-in-focus000:hover span {
+            display: inline;
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            padding: 8px 20px;
+            background: #f9f9f9;
+            color: #3366cc;
+            z-index: 999;
+            -webkit-border-top-left-radius: 5px;
+            -moz-border-radius-topLeft: 5px;
+            border-left: 1px solid #aaaaaa;
+            border-top: 1px solid #aaaaaa;
+        }
+
+        .roundabout a:active,
+        .roundabout a:focus,
+        .roundabout a:visited {
+            outline: none;
+            text-decoration: none;
+        }
+
+        .roundabout li {
+            margin: 0
+        }
+        .switcher{
+            text-align: center;
+            width:100%;
+        }
+        .switcher a {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border-radius: 0;
+            opacity: 1;
+            background: url(//game.gtimg.cn/images/3new/cp/a20180301ydy/spr.png) -1307px -166px no-repeat;
+            margin:0 5px;
+        }
+
+        .switcher .active {
+            background: url(//game.gtimg.cn/images/3new/cp/a20180301ydy/spr.png) -1289px -166px no-repeat;
+        }
+
+        /* 左右按钮按需求来写*/
+        .jq_btn {
+
+        }
+        .jq_btn a {
+            position: absolute;
+            top:30%;
+            display: block;
+            width: 50px;
+            height: 50px;
+            font-size: 50px;
+            text-align: center;
+            color: #f00;
+        }
+        .jq_btn a.prev-3d {
+            left: 50px;
+        }
+        .jq_btn a.next-3d {
+            right: 50px;
+        }
+    </style>
+</head>
+<body>
+ <!--基于jq的3d轮播 兼容ie8-->
+<div class="wrap">
+    <!--轮播图主题部分-->
+    <div class="exhibition_hall">
+        <div id="" class="roundabout_box">
+            <ul>
+                <li>
+                    <img src="//game.gtimg.cn/images/3new/cp/a20180301ydy/img1.jpg" width="300" height="426" alt="轮播一">
+                </li>
+                <li>
+                    <img src="//game.gtimg.cn/images/3new/cp/a20180301ydy/img2.jpg" width="300" height="426" alt="轮播二">
+                </li>
+                <li>
+                    <img src="//game.gtimg.cn/images/3new/cp/a20180301ydy/img3.jpg" width="300" height="426" alt="轮播二">
+                </li>
+                <li>
+                    <img src="//game.gtimg.cn/images/3new/cp/a20180301ydy/img4.jpg" width="300" height="426" alt="轮播四">
+                </li>
+                <li>
+                    <img src="//game.gtimg.cn/images/3new/cp/a20180301ydy/img5.jpg" width="300" height="426" alt="轮播五">
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 控制器小圆点-->
+    <div class="switcher jQ_sliderSwitch">
+        <a href="javascript:;" class="active"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+    </div>
+    <!-- 左右按钮 -->
+    <div class="jq_btn">
+        <a href="javascript:;" class="prev-3d">&lt;</a>
+        <a href="javascript:;" class="next-3d">&gt;</a>
+    </div>
+</div>
+<script src="//ossweb-img.qq.com/images/js/jquery/jquery-1.11.3.min.js"></script>
+<script src="js/jquery.roundabout.min.js"></script>
+<script type="text/javascript">
+    $('.roundabout_box ul').roundabout({
+        duration: 500,                              // 运动速度
+        minScale: 0.6,                             // 最小缩放值
+        autoplay: true,                           // 自动播放
+        autoplayDuration: 4000,                  // 自动播放的时间
+        minOpacity: 0.3,                          // 最小的透明度
+        maxOpacity: 1,                         // 最大的透明度
+//      reflect: true,              // 为true时是从左向右移动，为false从右向左移动
+        startingChild: 0,           // 默认的显示第几张图片 index
+        autoplayInitialDelay: 5000, // 从第几秒时，开始自动播放（默认毫秒）开始的第一次管用
+        autoplayPauseOnHover: true, // 鼠标移入元素内是否自动播放，为true不播放，false还自动播
+        //triggerFocusEvents: true,// 触发焦点事件
+        //triggerBlurEvents: true,            // 触发失去焦点事件
+        enableDrag: true,// 在移动端可以拖拽播放
+        btnPrev:".prev-3d", // 左按钮
+//      btnPrevCallback: function() { // 左按钮切换回调
+//
+//        },
+        btnNext:".next-3d", // 右按钮
+//        btnNextCallback: function() { // 右侧按钮切换回调
+//
+//        }
+//        responsive: true                   // 窗口变化响应
+    }).bind({
+        animationEnd: function (e) {
+            var index = $('.roundabout_box ul').roundabout('getChildInFocus');
+            $('.jQ_sliderSwitch a').removeClass('active');
+            $('.jQ_sliderSwitch a').eq(index).addClass('active');
+        }
+    });;
+
+    $('.jQ_sliderSwitch a').on('click', function () {
+        var $elem = $(this);
+        var index = $elem.index();
+        $('.roundabout_box ul').roundabout('animateToChild', index);
+        return false;
+    });
+
+</script>
+</body>
+</html>
